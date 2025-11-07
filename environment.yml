@@ -1,0 +1,19 @@
+name: buildbot
+channels:
+  - conda-forge
+  - pytorch
+dependencies:
+  - python=3.11
+  - pytorch
+  - cudatoolkit=12.1
+  - pip
+  - pip:
+      - stable-baselines3
+      - gymnasium
+      - numpy
+      - opencv-python
+      - mss
+      - pydirectinput
+      - matplotlib
+      - tensorboard
+      - pynput
