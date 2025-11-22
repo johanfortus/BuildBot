@@ -1,0 +1,7 @@
+gymnasium
+numpy
+opencv-python
+mss
+pydirectinput
+stable-baselines3[extra]
+tensorboard
