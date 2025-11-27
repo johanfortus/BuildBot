@@ -37,7 +37,7 @@ class FortniteEnv(gym.Env):
     def reset(self, seed=None, options=None):
         super().reset(seed=seed)
 
-        frame = self.capture.get_frame()
+        colorFrame ,frame = self.capture.get_frame()
         for _ in range(self.frame_stack):
             self.frames.append(frame)
 
@@ -47,10 +47,10 @@ class FortniteEnv(gym.Env):
     def step(self, action):
         self.controller.perform(action)
 
-        frame = self.capture.get_frame()
+        colorFrame ,frame = self.capture.get_frame()
         self.frames.append(frame)
 
-        reward, info = compute_reward(frame)
+        reward, info = compute_reward(frame, colorFrame)
 
         self.steps += 1
         terminated = False
