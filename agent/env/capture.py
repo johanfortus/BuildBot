@@ -9,8 +9,8 @@ class ScreenCapture:
         self.region = {
             "top": 100,
             "left": 100,
-            "width": 800,
-            "height": 600
+            "width": 1200,
+            "height": 800
         }
 
     def get_frame(self):

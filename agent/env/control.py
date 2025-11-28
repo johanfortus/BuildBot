@@ -5,26 +5,23 @@ import time
 class ActionController:
     def __init__(self):
         pydirectinput.FAILSAFE = False
-
+        #pydirectinput.keyDown("w")
+    
     def perform(self, action):
         if action == 0:
-            return
+            pydirectinput.moveRel(-20, 0)
         elif action == 1:
-            self._hold("w")
+            pydirectinput.moveRel(20, 0)
         elif action == 2:
-            self._hold("s")
+            pydirectinput.moveRel(0, -15)
         elif action == 3:
-            self._hold("a")
+            pydirectinput.moveRel(0, 15)
+        """
         elif action == 4:
-            self._hold("d")
-        elif action == 5:
             pydirectinput.press("space")
-        elif action == 6:
-            pydirectinput.click()
-        elif action == 7:
-            pydirectinput.moveRel(-15, 0)
-        elif action == 8:
-            pydirectinput.moveRel(15, 0)
+        elif action == 5:
+            pass
+        """
 
     def _hold(self, key, t=2):
         pydirectinput.keyDown(key)

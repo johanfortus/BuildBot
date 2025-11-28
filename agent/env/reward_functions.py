@@ -1,5 +1,6 @@
 import numpy as np
 import cv2
+from agent.env.item_detector import detect_item
 
 prev_frame = None
 
@@ -7,7 +8,7 @@ def compute_reward(frame, colorFrame):
     global prev_frame
 
     hsv = cv2.cvtColor(colorFrame, cv2.COLOR_BGR2HSV) # Convert for easier color detection
-
+    info = {}
     # RGB range
     lower_green = np.array([40, 50, 50])
     upper_green = np.array([80, 255, 255])
@@ -24,7 +25,12 @@ def compute_reward(frame, colorFrame):
     if green_ratio > 0.80: # Detect if green takes up most of screen
         reward += 10.0  
 
+    if detect_item(colorFrame):
+        reward += 0.02  # small shaping reward
+        info["item_visible"] = True
+        print("ITEM DETECTED")
+
     prev_frame = frame.copy()
 
-    info = {}
+    
     return reward, info

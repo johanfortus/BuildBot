@@ -29,7 +29,7 @@ class FortniteEnv(gym.Env):
         )
 
         # --- ACTION SPACE ---
-        self.action_space = spaces.Discrete(9)
+        self.action_space = spaces.Discrete(4)
 
         self.steps = 0
         self.max_steps = 3000
@@ -54,6 +54,9 @@ class FortniteEnv(gym.Env):
 
         self.steps += 1
         terminated = False
+        if info.get("pickup", False):
+            terminated = True
+        
         truncated = self.steps >= self.max_steps
 
         return np.array(self.frames), reward, terminated, truncated, info
