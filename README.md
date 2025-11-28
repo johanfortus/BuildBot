@@ -26,3 +26,13 @@ Install dependencies
 ```bash
 pip install -r requirements.txt
 ```
+
+To train agent
+```bash
+python -m agent.train.train_ppo
+```
+
+To stop & save
+```bash
+CTRL + C
+```
