@@ -9,13 +9,11 @@ class ActionController:
     def __init__(self):
         pydirectinput.FAILSAFE = False
         pydirectinput.keyDown("w")
-        #pydirectinput.keyDown("4")
     
 
     def perform(self, action):
         right_thumb_x = 0
         right_thumb_y = 0
-        pydirectinput.keyDown("4")
         if action == 0:
             right_thumb_x = -1 # look to the left
         elif action == 1:

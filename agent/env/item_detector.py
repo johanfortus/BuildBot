@@ -2,8 +2,8 @@ import cv2
 import numpy as np
 
 # Adjust based on item color, hsv 
-LOWER_COLOR = np.array([0, 26, 163])
-UPPER_COLOR = np.array([100, 255, 255])
+LOWER_COLOR = np.array([83, 148, 118])
+UPPER_COLOR = np.array([111, 255, 218])
 
 MIN_ITEM_AREA = 10
 

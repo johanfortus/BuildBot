@@ -16,7 +16,6 @@ def compute_reward(frame, colorFrame):
     mask = cv2.inRange(hsv, lower_green, upper_green) # How many green pixels in frame
     green_ratio = np.sum(mask > 0) / (mask.shape[0] * mask.shape[1]) # ratio of green pixels on frame
 
-    reward = 0.01  # survival reward
 
     if prev_frame is not None:
         movement = np.mean(np.abs(frame - prev_frame))
@@ -26,7 +25,7 @@ def compute_reward(frame, colorFrame):
         reward += 10.0  
 
     if detect_item(colorFrame):
-        reward += 0.02  # small shaping reward
+        reward += 2  # small shaping reward
         info["item_visible"] = True
         print("ITEM DETECTED")
 
