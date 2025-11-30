@@ -5,3 +5,4 @@ mss
 pydirectinput
 stable-baselines3[extra]
 tensorboard
+vgamepad
