@@ -24,7 +24,7 @@ spawn_random_item_spawner := class(creative_device):
         Print("PrevIdx: {PrevIdx}")
         var RandomIdx : int = 0
         loop:
-            set RandomIdx = GetRandomInt(0, 75)
+            set RandomIdx = GetRandomInt(0, ItemSpawnersArray.Length - 1)
             if(RandomIdx <> PrevIdx):
                 break
         Print("New Idx: {RandomIdx}")
