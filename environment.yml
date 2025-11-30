@@ -8,6 +8,7 @@ dependencies:
   - cudatoolkit=12.1
   - pip
   - pip:
+      - vgamepad
       - stable-baselines3
       - gymnasium
       - numpy
