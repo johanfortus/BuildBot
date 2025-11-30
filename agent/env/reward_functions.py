@@ -26,7 +26,7 @@ def compute_reward(frame, colorFrame):
         reward += 10.0  
 
     if detect_item(colorFrame):
-        reward += 2  # small shaping reward
+        reward += .5  # small shaping reward
         info["item_visible"] = True
         print("ITEM DETECTED")
 

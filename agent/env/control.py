@@ -23,4 +23,8 @@ class ActionController:
         
         gamepad.right_joystick_float(x_value_float=right_thumb_x, y_value_float=right_thumb_y)
         gamepad.update()
+    
+    def res(self):
+        gamepad.reset()
+        gamepad.update()
 
