@@ -1,29 +1,26 @@
 import pydirectinput
 import time
+import vgamepad as vg
+gamepad = vg.VX360Gamepad()
+
 
 
 class ActionController:
     def __init__(self):
         pydirectinput.FAILSAFE = False
-        #pydirectinput.keyDown("w")
+        pydirectinput.keyDown("w")
     
-    def perform(self, action):
-        if action == 0:
-            pydirectinput.moveRel(-20, 0)
-        elif action == 1:
-            pydirectinput.moveRel(20, 0)
-        elif action == 2:
-            pydirectinput.moveRel(0, -15)
-        elif action == 3:
-            pydirectinput.moveRel(0, 15)
-        """
-        elif action == 4:
-            pydirectinput.press("space")
-        elif action == 5:
-            pass
-        """
 
-    def _hold(self, key, t=2):
-        pydirectinput.keyDown(key)
-        time.sleep(t)
-        pydirectinput.keyUp(key)
+    def perform(self, action):
+        right_thumb_x = 0
+        right_thumb_y = 0
+        if action == 0:
+            right_thumb_x = -1 # look to the left
+        elif action == 1:
+            right_thumb_x = 0 # look straight
+        elif action == 2:
+            right_thumb_x = 1 # look to the right
+        
+        gamepad.right_joystick_float(x_value_float=right_thumb_x, y_value_float=right_thumb_y)
+        gamepad.update()
+
