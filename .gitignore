@@ -1,0 +1,50 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv
+
+# Machine Learning / Training
+logs/
+models/
+*.pth
+*.pt
+*.ckpt
+*.h5
+*.pb
+*.onnx
+runs/
+wandb/
+mlruns/
+tensorboard/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Thumbs.db
+
+# Environment variables
+.env
+.env.local
+
+# Temporary files
+temp.py
+*.tmp
+*.log
