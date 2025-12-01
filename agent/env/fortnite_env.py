@@ -41,6 +41,7 @@ class FortniteEnv(gym.Env):
         for _ in range(self.frame_stack):
             self.frames.append(frame)
 
+        self.controller.res()
         self.steps = 0
         return np.array(self.frames), {}
 
@@ -60,3 +61,7 @@ class FortniteEnv(gym.Env):
         truncated = self.steps >= self.max_steps
 
         return np.array(self.frames), reward, terminated, truncated, info
+    
+    def close(self):
+        self.controller.res()
+        self.controller.pydirectinput.keyUp('w')
