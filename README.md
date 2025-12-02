@@ -27,6 +27,10 @@ Install dependencies
 pip install -r requirements.txt
 ```
 
+To use the RL agent within our provided environments, follow the environment setup instructions here:
+
+➡️ **[uefn/README.md](uefn/README.md)**  
+
 ## Training
 
 ### PPO (Proximal Policy Optimization)
@@ -56,3 +60,29 @@ tensorboard --logdir ./logs
 **Training Tips:**
 - Press `CTRL + C` during training to safely stop and save the current model
 - Models are automatically saved to the `models/` directory
+
+## Fortnite Settings
+
+To ensure consistent computer-vision detection and reward tracking,
+Fortnite must run using the following graphics settings:
+
+**Resolution:** 1920 x 1080  
+**Rendering Mode:** DirectX12  
+**Brightness:** 100%  
+**User Interface Contrast:** 1x  
+**Color Blind Mode:** Off  
+**Color Blind Strength:** 5  
+**Anti-Aliasing & Super Resolution:** NVIDIA DLSS  
+**Global Illumination:** Ambient Occlusion  
+**Reflections:** Screen Space  
+**Shadows:** High  
+**View Distance:** Epic  
+**Textures:** High  
+**Effects:** High  
+**Post Processing:** Medium  
+**HUD Scale:** 100%  
+
+If your Fortnite colors differ or detection seems off,
+you can tune HSV thresholds using the tools inside:
+
+➡️ **[vision/README.md](vision/README.md)**  
