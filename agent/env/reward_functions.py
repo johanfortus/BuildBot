@@ -30,7 +30,7 @@ def compute_reward(frame, colorFrame):
 
     if prev_frame is not None:
         movement = np.mean(np.abs(frame - prev_frame))
-        reward += movement * 0.1  # encourage motion
+        #reward += movement * 0.1  # encourage motion
 
     if green_ratio > 0.80: # Detect if green takes up most of screen
         reward += 10.0  
@@ -48,14 +48,15 @@ def compute_reward(frame, colorFrame):
         reward -= 0.001
     
     
-    """
+    
     if detect_item(colorFrame):
-        reward += .5  # small shaping reward
-        reward += .05  # small shaping reward
+        # reward += .5  # small shaping reward
+        # reward += .05  # small shaping reward
+        reward += .01  # small shaping reward
         info["item_visible"] = True
         print("ITEM DETECTED")
 
-    """
+    
     prev_frame = frame.copy()
 
     

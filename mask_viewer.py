@@ -33,3 +33,5 @@ def main():
         if cv2.waitKey(1) & 0xFF == ord("q"):
             break
 
+if __name__ == "__main__":
+    main()
