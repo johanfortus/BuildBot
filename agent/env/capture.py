@@ -9,7 +9,7 @@ class ScreenCapture:
         self.region = {
             "top": 100,
             "left": 100,
-            "width": 1200,
+            "width": 1600,
             "height": 800
         }
 
