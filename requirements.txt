@@ -6,3 +6,6 @@ pydirectinput
 stable-baselines3[extra]
 tensorboard
 vgamepad
+keyboard
+mouse
+imitation
