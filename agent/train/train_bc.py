@@ -38,8 +38,8 @@ def train_bc_agent():
     transitions =   []
     for state, action in zip(all_states, all_actions):
         transition ={
-            "obs" : state,
-            "acts" : np.array([action])
+            "obs" : all_states,
+            "acts" : all_actions,
             }
         transitions.append(transition)
 
@@ -58,7 +58,7 @@ def train_bc_agent():
         action_space= action_space,
         demonstrations= transitions,
         rng=rng,
-        batch_size = 16,
+        batch_size = all_states.shape[0],
     )
 
     print("Starting BC training...")
