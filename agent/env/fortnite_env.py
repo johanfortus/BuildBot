@@ -29,7 +29,7 @@ class FortniteEnv(gym.Env):
         )
 
         # --- ACTION SPACE ---
-        self.action_space = spaces.Discrete(4)
+        self.action_space = spaces.Discrete(3)
 
         self.steps = 0
         self.max_steps = 3000
@@ -63,5 +63,9 @@ class FortniteEnv(gym.Env):
         return np.array(self.frames), reward, terminated, truncated, info
     
     def close(self):
-        self.controller.res()
-        self.controller.pydirectinput.keyUp('w')
+        try:
+            self.controller.res()
+            self.controller.pydirectinput.keyUp("w")
+            self.controller.close()
+        except Exception:
+            pass

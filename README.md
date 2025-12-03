@@ -55,11 +55,43 @@ tensorboard --logdir ./logs
 
 *Currently in development.*
 
----
-
 **Training Tips:**
 - Press `CTRL + C` during training to safely stop and save the current model
 - Models are automatically saved to the `models/` directory
+
+## System Architecture
+
+The BuildBot system is composed of four core subsystems:
+
+1. **Screen Capture** - Reads gameplay frames for observations and reward signals
+2. **RL Environment & Rewards** - Converts frames into state, computes rewards, and manages episode logic
+3. **Agent** - Learns a policy using Stable-Baselines3
+4. **Fortnite Environment** - An environment built in Unreal Engine for Fortnite (UEFN), using Verse scripts to trigger HUD flashes that the agent detects as reward signals.
+
+Below is the full end-to-end workflow describing how observations, actions, and rewards move through the system:
+
+<img width="900" src="assets/buildbot_system.jpg">
+
+## Analysis
+
+### Plot training rewards
+
+You can plot episode rewards (and run duration) from TensorBoard logs with:
+
+**Latest run across all logs:**
+```bash
+python -m analysis.plot_rewards
+```
+ 
+**Specific run:**
+```bash
+python -m analysis.plot_rewards RUN_NAME
+```
+
+Replace `RUN_NAME` with your run directory name, e.g.:
+```bash
+python -m analysis.plot_rewards PPO_16
+```
 
 ## Fortnite Settings
 
