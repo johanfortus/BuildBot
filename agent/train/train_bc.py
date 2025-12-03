@@ -35,38 +35,41 @@ def train_bc_agent():
     print(f"Shape of all_states: {all_states.shape}")
     print(f"Shape of all_actions: {all_actions.shape}")
 
+    transitions =   []
+    for state, action in zip(all_states, all_actions):
+        transition ={
+            "obs" : state,
+            "acts" : np.array([action])
+            }
+        transitions.append(transition)
+
 
     observation_space = spaces.Box(
-        low=0, high=255, shape=(all_states.shape[1], 84, 84), 
-        dtype=np.uint8
+        low=0, high=255, shape=(4, 84, 84), dtype=np.uint8
     )
 
     action_space = spaces.Discrete(3)
 
-    demonstrations = (all_states, all_actions)
-
-    rng = np.random.default_rng()
+    rng = np.random.default_rng(0)
     
 
     model = BC(
         observation_space= observation_space,
         action_space= action_space,
-        demonstrations= demonstrations,
+        demonstrations= transitions,
         rng=rng,
-        batch_size = 64,
+        batch_size = 16,
     )
 
     print("Starting BC training...")
     try:
         model.train(
-            n_batches=10,
-            log_interval=10,
+            n_epochs=1
             )
-    except KeyboardInterrupt:
-        print("Exiting BC learning early")
+    except Exception as e:
+        print("Failed to train", e)
 
-    model.save("models/buildbot_bc")
-
+    model.policy.save("models/buildbot_bc_policy")
 
 if __name__ == "__main__":
     train_bc_agent()
