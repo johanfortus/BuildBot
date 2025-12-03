@@ -53,7 +53,27 @@ tensorboard --logdir ./logs
 
 ### Behavior Cloning
 
-*Currently in development.*
+Create a policy to use with the agent:
+
+To start the input recording run
+
+```bash
+python -m agent.train.record_demo
+```
+
+To stop the recording hit `escape`
+- This will log the actions and states during the recording in `./logs_bc`
+
+Once the data in logs_bc is sufficient run
+
+```bash
+python -m agent.train.train_bc
+```
+
+Upon completion it will place a policy in the `models/` directory
+
+*Further implementation for model training and validation of data is still in development*
+
 
 **Training Tips:**
 - Press `CTRL + C` during training to safely stop and save the current model

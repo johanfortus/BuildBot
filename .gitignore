@@ -12,6 +12,7 @@ ENV/
 .venv
 
 # Machine Learning / Training
+logs_bc/
 logs/
 models/
 *.pth
