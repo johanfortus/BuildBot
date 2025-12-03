@@ -29,6 +29,8 @@ def main():
         else:
             scoreCooldown = False
         
+        if detect_item(obs):
+            print("ITEM DETECTED")
         
         if cv2.waitKey(1) & 0xFF == ord("q"):
             break
