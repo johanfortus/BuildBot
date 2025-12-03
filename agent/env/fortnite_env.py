@@ -11,11 +11,12 @@ from .reward_functions import compute_reward
 class FortniteEnv(gym.Env):
     metadata = {"render_modes": []}
 
-    def __init__(self):
+    def __init__(self, manual_control=False):
         super().__init__()
 
         self.capture = ScreenCapture()
         self.controller = ActionController()
+        self.manual_control = manual_control
 
         # --- OBSERVATION SPACE ---
         self.frame_stack = 4
@@ -46,7 +47,8 @@ class FortniteEnv(gym.Env):
         return np.array(self.frames), {}
 
     def step(self, action):
-        self.controller.perform(action)
+        if not self.manual_control:
+            self.controller.perform(action)
 
         colorFrame ,frame = self.capture.get_frame()
         self.frames.append(frame)

@@ -5,23 +5,29 @@ from datetime import datetime
 import keyboard
 import mouse
 import os
+import time
 
 
 def capture_player_action():
 
-    movement = [
-        int(keyboard.is_pressed("w")),
-        int(keyboard.is_pressed("a")),
-        int(keyboard.is_pressed("s")),
-        int(keyboard.is_pressed("d"))
-    ]
+    time.sleep(0.01)
 
     mouse_pos = mouse.get_position()
-    left_click = int(mouse.is_pressed(button='left'))
     x_value = mouse_pos[0]
 
+    SCREEN_WIDTH = 1920
 
-    action = movement + [x_value, left_click]
+    if x_value < SCREEN_WIDTH /3:
+        action = 0
+        #print("Left")
+    elif x_value > 2 * SCREEN_WIDTH / 3:
+        action = 2
+        #print("Right")
+    else:
+        action = 1
+        #print("Straight")
+
+    
 
     return action
 
@@ -38,7 +44,7 @@ def record_demo():
 
     print(f"Creating demo folder to : {save_folder}")
 
-    env = FortniteEnv()
+    env = FortniteEnv(manual_control=True)
 
     states = []
     actions = []
