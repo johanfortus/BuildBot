@@ -61,6 +61,27 @@ tensorboard --logdir ./logs
 - Press `CTRL + C` during training to safely stop and save the current model
 - Models are automatically saved to the `models/` directory
 
+## Analysis
+
+### Plot training rewards
+
+You can plot episode rewards (and run duration) from TensorBoard logs with:
+
+**Latest run across all logs:**
+```bash
+python -m analysis.plot_rewards
+```
+ 
+**Specific run:**
+```bash
+python -m analysis.plot_rewards RUN_NAME
+```
+
+Replace `RUN_NAME` with your run directory name, e.g.:
+```bash
+python -m analysis.plot_rewards PPO_16
+```
+
 ## Fortnite Settings
 
 To ensure consistent computer-vision detection and reward tracking,

@@ -48,14 +48,15 @@ def compute_reward(frame, colorFrame):
         reward -= 0.001
     
     
-    """
+    
     if detect_item(colorFrame):
-        reward += .5  # small shaping reward
-        reward += .05  # small shaping reward
+        # reward += .5  # small shaping reward
+        # reward += .05  # small shaping reward
+        reward += .01  # small shaping reward
         info["item_visible"] = True
         print("ITEM DETECTED")
 
-    """
+    
     prev_frame = frame.copy()
 
     
