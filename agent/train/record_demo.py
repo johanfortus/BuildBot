@@ -27,8 +27,6 @@ def capture_player_action():
         action = 1
         #print("Straight")
 
-    
-
     return action
 
 
@@ -49,7 +47,6 @@ def record_demo():
     states = []
     actions = []
 
-    frame_stack = deque(maxlen=4)
     obs, _ = env.reset()
 
     while True:
@@ -57,10 +54,7 @@ def record_demo():
 
         frames, reward, terminated, truncated, info = env.step(action)
 
-        frame_stack.append(frames)
-
-        if len(frame_stack) == 4:
-            states.append(np.array(frame_stack))
+        states.append(frames)
 
         actions.append(action)
 
